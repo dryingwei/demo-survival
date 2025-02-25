@@ -158,8 +158,8 @@ def categorize_stage(stage):
     else:
         return None  # 如果有其他值可以作为“未知”处理
 
-wd = r"C:\Users\Jing\Desktop\Tianyuan\homework\PDAC"
-clinical_path = os.path.join(wd, "meta/pdac_sup_1.xlsx")
+# wd = r"C:\Users\Jing\Desktop\Tianyuan\homework\PDAC"
+clinical_path = os.path.join("data", "pdac_sup_1.xlsx")
 clinical_df = pd.read_excel(clinical_path, sheet_name = "Clinical_data")
 meta_df = clinical_df[clinical_df["histology_diagnosis"] == "PDAC"]
 meta_df = meta_df[(meta_df["cause_of_death"] == "pancreatic carcinoma") | (meta_df["cause_of_death"] == "na")]
@@ -309,7 +309,7 @@ with tabs[3]:
 with tabs[4]:
     st.header("COX Model")
     with st.spinner("Training the COX model..."):
-        meta_path2 = os.path.join(wd, 'meta/info2.tsv')
+        meta_path2 = os.path.join("data",'info2.tsv')
         print(meta_path2)
         meta_df_path2 = pd.read_csv(meta_path2,sep="\t")
         meta_df_path2 = meta_df_path2.dropna()
